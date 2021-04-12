@@ -1,0 +1,26 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<p>João Victor Ferreira de Oliveira</p>
+
+    <% if(request.getParameter("session.user")!=null){
+        session.setAttribute("session.user", request.getParameter("session.user"));
+        response.sendRedirect(requesr.getRequestURI());
+    } else if(requesr.getParameter("session.sai") !=null){
+        session.removeAttribute("session.user");
+        response.sendRedirect(request.getRequestURI());
+    }
+    %>
+    
+    <% if(session.getAttribute("session.user") != null) {%>
+    <form>
+        <p>Usuário: <%= session.getAttribute("session.user")%></p>
+        <a href="index.jsp"> Início</a>
+        <a href="disciplina.jsp">Disciplinas</a> 
+        <input type="submit" name="session.sai" value="Sair"
+        
+    </form>
+        <%} else{{%>
+        <form>
+            Usuário: <input type="text" name="session.user"/>
+        </form>
+    }
